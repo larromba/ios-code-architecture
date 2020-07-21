@@ -68,7 +68,9 @@ It's still a work in progress, and probably has many areas to improve, but it's 
 ### `Utility`
 - Business logic utilities to help make code more reusable.
 - `Manager`, `Service`, `Object`. Names are usually tricky, but there's no real convention - just whatever makes sense. Here's some articles:
+
 [avoiding managers](https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager)
+
 [the trouble with managers](https://sandofsky.com/patterns/manager-classes/)
 
 ## Protocols
