@@ -13,9 +13,13 @@ Here are [many interesting architectures](https://github.com/onmyway133/awesome-
 Architecture seems the most artistic part of coding. Whilst simple ideas are often the best, there's something satisfying about clean design patterns. They take something mundane, and make it humane. However, the battle is often over finding the impossible middle-ground between simple and over-engineered, dynamic, yet consistent. One foot in order, and the other in chaos. The illusion of perfect architecture can easily bring one to the brink of madness.
 
 From reading through the examples above, seeing real-world implementations, and of course, by making mistakes and subsequent refactors, herein contains a brief description of design patterns used in:
+
 [EasyMusicPlayer](https://github.com/larromba/EasyMusicPlayer)
+
 [EasyLife](https://github.com/larromba/EasyLife)
+
 [DigiDocs](https://github.com/larromba/DigiDocs)
+
 [Graffiti-Backgrounds](https://github.com/larromba/graffiti-backgrounds)
 
 ## Overview
