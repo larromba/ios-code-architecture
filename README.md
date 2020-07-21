@@ -67,9 +67,7 @@ It's still a work in progress, and probably has many areas to improve, but it's 
 
 ### `Utility`
 * Business logic utilities to help make code more reusable.
-* `Manager`, `Service`, `Object`. Names are usually tricky, but there's no real convention - just whatever makes sense. 
-
-Here's some articles:
+* `Manager`, `Service`, `Object`. Names are usually tricky, but there's no real convention - just whatever makes sense. Here's some articles:
 
 [avoiding managers](https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager)
 
@@ -162,4 +160,8 @@ Cons:
 ## Points of Interest
 Objects are unnecessarily created in the `AppFactory` instance. It's 'more precise' to create & inject these only when necessary (such as at the `Router`, or `Coordinator` level). However, as the memory footprint is often only from `Data` or `View` objects, which are still allocated at point of use, it's not really a problem.
 
-The advantage outweighs this inaccuracy, as it becomes easier to test from higher levels. For example, if the business logic for downloading an image works, but the button triggering it does not, the app won't work, even if the business logic is passing its own test. So by testing the button press (input), and the UI expectation (output), rather than the explicit business logic (that may even be split over multiple classes), we achieve a more accurate test. By not caring for the underlying implementation - refactors are also easier. It's intuitive to think of testing this way - e.g. when I tap this button, I expect something to happen. These tests often achieve 70-80% code coverage.
+The advantage outweighs this inaccuracy, as it becomes easier to test from higher levels. For example, if the business logic for downloading an image works, but the button triggering it does not, the app won't work, even if the business logic is passing its own test. So by testing the button press (input), and the UI expectation (output), rather than the explicit business logic (that may even be split over multiple classes), we achieve a more accurate test. 
+
+By not caring for the underlying implementation - refactors are easier. It's also more intuitive to think of testing this way - e.g. when I tap this button, I expect something to happen. 
+
+This method of testing often achieve 70-80% code coverage.
