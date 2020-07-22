@@ -99,12 +99,12 @@ As mentioned above, the `UIAppDelegate` can be intercepted by creating an `AppTe
 ```swift
 final class AppTestEnvironment {
     // objects that can be stubbed before injecting (like managers / services)
-    var foo: FooService!
+    var foo: FooServicing!
     
     // objects that that can't be stubbed as they're created on injection (like coordinators / controllers)
     private(set) app: Apping!
     
-    init(foo: FooService) {
+    init(foo: FooServicing) {
         self.foo = foo
     }
     
