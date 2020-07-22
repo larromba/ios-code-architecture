@@ -67,11 +67,7 @@ It's still a work in progress, and probably has many areas to improve, but it's 
 
 ### `Utility`
 * Business logic utilities to help make code more reusable.
-* `Manager`, `Service`, `Object`. Names are usually tricky, but there's no real convention - just whatever makes sense. Here's some articles:
-
-[avoiding managers](https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager)
-
-[the trouble with managers](https://sandofsky.com/patterns/manager-classes/)
+* `Manager`, `Service`, `Object`. Names are usually tricky, but there's no real convention - just whatever makes sense. Here's some articles about [avoiding managers](https://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager) and [the trouble with managers](https://sandofsky.com/patterns/manager-classes/).
 
 ## Protocols
 All parts should be defined with a protocol ending in `able` or `ing` - whatever reads better. This creates an interface that allows each part to be swapped out for mock objects. 
@@ -103,7 +99,7 @@ As mentioned above, the `UIAppDelegate` can be intercepted by creating an `AppTe
 ```swift
 final class AppTestEnvironment {
     // objects that can be stubbed before injecting (like managers / services)
-    var app: FooService!
+    var foo: FooService!
     
     // objects that that can't be stubbed as they're created on injection (like coordinators / controllers)
     private(set) app: Apping!
@@ -160,8 +156,8 @@ Cons:
 ## Points of Interest
 Objects are unnecessarily created in the `AppFactory` instance. It's 'more precise' to create & inject these only when necessary (such as at the `Router`, or `Coordinator` level). However, as the memory footprint is often only from `Data` or `View` objects, which are still allocated at point of use, it's not really a problem.
 
-The advantage outweighs this inaccuracy, as it becomes easier to test from higher levels. For example, if the business logic for downloading an image works, but the button triggering it does not, the app won't work, even if the business logic is passing its own test. So by testing the button press (input), and the UI expectation (output), rather than the explicit business logic (that may even be split over multiple classes), we achieve a more accurate test. 
+The advantage outweighs this inaccuracy, as it becomes easier to test from the UI level. For example, if the business logic for downloading an image has a test that passes, but the button triggering it is disconnected, it won't work from the user's perspective. So by testing the button press (input), and the UI expectation (output), rather than the explicit business logic (that may even be split over multiple classes), we achieve a more accurate test, by intrinsically testing all involved components. 
 
-By not caring for the underlying implementation - refactors are easier. It's also more intuitive to think of testing this way - e.g. when I tap this button, I expect something to happen. 
+By not caring for the underlying implementation, refactors become easier. It's also more intuitive to think of testing this way - e.g. when I tap this button, I expect something to happen. 
 
-This method of testing often achieve 70-80% code coverage.
+This method of testing often achieves 70-80% code coverage.
